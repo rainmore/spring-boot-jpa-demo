@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+         mavenLocal() // for testing only
+         mavenCentral() // for testing only
+    }
+    dependencies {
+        classpath group: 'gradle.plugin.gradle-plugins',           name: 'jartest',                   version: project.ext.get('plugin.testjar.version')
+    }
+}
+
+plugins {
+    id 'org.springframework.boot'          version '1.5.2.RELEASE' apply true
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.8'         apply true
+}
+
+description = 'RAINMORE JPA Demo'
+group 'net.rainmore'
+version '1.2.4'
+
+
+allprojects {
+    repositories {
+        mavenLocal() // for testing only
+        mavenCentral() // for testing only
+        maven { url "http://central.maven.org/maven2/" }
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'application'
+
+dependencies {
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: project.ext.get('apache.commons.lang.version')
+
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: project.ext.get('hibernate.version')
+    compile group: 'org.hibernate', name: 'hibernate-validator',     version: project.ext.get('hibernate.validator.version')
+    
+}
+
+apply from: 'projects/logging.gradle'
+apply from: 'projects/querydsl.gradle'
+apply from: 'projects/db.gradle'
+apply from: 'projects/spring.gradle'
+apply from: 'projects/boot.gradle'
+apply from: 'projects/tests.gradle'
+
+
+

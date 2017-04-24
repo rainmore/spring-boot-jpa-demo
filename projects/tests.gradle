@@ -1,0 +1,83 @@
+//apply plugin: 'com.github.maiflai.scalatest'
+
+dependencies {
+    testCompile group: 'com.typesafe', name: 'config',            version: project.ext.get('typesafe.config.version')
+
+//    testCompile group: 'org.scalatest', name: sclArt('scalatest'), version: project.ext.get('scalatest.version')
+
+    testCompile group: 'org.springframework',          name: 'spring-test',                    version: project.ext.get('spring.version')
+    testCompile group: 'org.springframework.security', name: 'spring-security-test',           version: project.ext.get('spring.security.version')
+    testCompile group: 'org.springframework.boot',     name: 'spring-boot-test-autoconfigure', version: project.ext.get('spring.boot.version')
+
+    // https://mvnrepository.com/artifact/junit/junit
+    testCompile('junit:junit:4.12'){
+        exclude group: 'org.hamcrest'
+    }
+
+
+//    testCompile group: 'javax.servlet',                name: 'javax.servlet-api',    version: '3.1.0'
+    testCompile group: 'org.hamcrest',                 name: 'hamcrest-all',         version: '1.3'
+    testCompile group: 'org.mockito',                  name: 'mockito-all',          version: '1.10.19'
+    testCompile group: 'com.jayway.jsonpath',          name: 'json-path',            version: '2.2.0'
+    testCompile group: 'com.jayway.jsonpath',          name: 'json-path-assert',     version: '2.2.0'
+
+    testCompile group: 'io.codearte.jfairy',           name: 'jfairy',               version: '0.5.3'
+
+//    testRuntime group: 'org.pegdown', name: 'pegdown', version: '1.6.0'
+//    testRuntime group: 'org.apache.tika', name: 'tika-java7', version: '1.12'
+}
+//
+//ext.getConfigProp = { String property ->
+//    def props = project.ext
+//    def value = props.get('test.' + property)
+//
+//    if (props.has('teamcity'))
+//        props.get('teamcity').getProperty(property, value)
+//    else value
+//}
+
+//ext.getConfigMap = {
+//    def config = [
+//        'test.suite':    getConfigProp('suite'),
+//        'test.tags':     getConfigProp('tags'),
+//        'test.parallel': getConfigProp('parallel'),
+//
+//        'test.selenium.grid':      getConfigProp('selenium.grid'),
+//        'test.selenium.remoteUrl': getConfigProp('selenium.remoteUrl'),
+//        'test.selenium.browser':   getConfigProp('selenium.browser'),
+//
+//        'test.selenium.screenshots.dir': getConfigProp('selenium.screenshots.dir'),
+//
+//        'test.db.host': getConfigProp('db.host'),
+//        'test.db.port': getConfigProp('db.port'),
+//        'test.db.name': getConfigProp('db.name'),
+//        'test.db.user': getConfigProp('db.user'),
+//        'test.db.pass': getConfigProp('db.pass'),
+//
+////        'test.asset.dir': getConfigProp('asset.dir'),
+//    ]
+//
+//    return config
+//}
+
+//test {
+//    // force run task all the time
+//    outputs.upToDateWhen { false }
+//
+//    ext.config = getConfigMap()
+//    systemProperties = config
+//
+//    if (config['test.suite']) {
+//        suite 'com.worldmanager.test.' + config['test.suite']
+//    }
+//
+//    if (config['test.tags']) {
+//        tags {
+//            // TODO: include 'com.worldmanager.test.' + config['test.tag']
+//        }
+//    }
+//
+//    if (config['test.parallel'] != 'true') {
+//        maxParallelForks = 1
+//    }
+//}
